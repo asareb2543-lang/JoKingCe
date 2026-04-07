@@ -10,38 +10,45 @@
   <style>
     :root {
       --gold: #C9A84C;
-      --gold-light: #E8C97A;
+      --light-gold: #E8C97A;
       --pale-gold: #FDF6E3;
       --black: #1A1208;
       --warm-gray: #4A3F2F;
       --muted: #8A7A60;
       --border: #E8DFC8;
       --bg: #FEFCF7;
-      --success: #2D7D46;
-      --success-bg: #E7F6EC;
-      --pending: #A97702;
-      --pending-bg: #FFF4D6;
-      --completed-bg: #EFEDE8;
-      --danger: #A12424;
-      --shadow: 0 10px 24px rgba(26, 18, 8, 0.08);
+      --success-bg: #E5F5EA;
+      --success: #2B7E47;
+      --pending-bg: #FFF4D8;
+      --pending: #9C6D00;
+      --completed-bg: #ECE8E0;
+      --danger: #A32626;
+      --shadow: 0 12px 28px rgba(26, 18, 8, 0.08);
     }
 
     * { box-sizing: border-box; }
-
     body {
       margin: 0;
       font-family: 'Montserrat', sans-serif;
-      background: var(--bg);
       color: var(--warm-gray);
+      background: var(--bg);
     }
 
     .header {
-      background: var(--black);
       position: sticky;
       top: 0;
-      z-index: 20;
-      padding: 16px 20px;
-      border-bottom: 1px solid #2a1e11;
+      z-index: 30;
+      background: var(--black);
+      border-bottom: 1px solid #2a1d12;
+      padding: 14px 20px 16px;
+    }
+
+    .brand {
+      display: flex;
+      flex-wrap: wrap;
+      align-items: end;
+      justify-content: space-between;
+      gap: 12px;
     }
 
     .logo {
@@ -54,34 +61,27 @@
     }
 
     .subtitle {
-      margin: 2px 0 0;
+      margin: 4px 0 0;
       color: #fff;
-      font-size: 0.9rem;
-      letter-spacing: 0.06em;
       text-transform: uppercase;
-    }
-
-    main {
-      padding: 20px;
-      max-width: 1250px;
-      margin: 0 auto;
+      letter-spacing: 0.06em;
+      font-size: 0.8rem;
     }
 
     .tabs {
       display: flex;
       gap: 10px;
       flex-wrap: wrap;
-      margin-bottom: 18px;
     }
 
     .tab-btn {
-      border: 1px solid var(--gold-light);
-      color: var(--warm-gray);
-      background: #fff;
+      border: 1px solid var(--light-gold);
       border-radius: 999px;
-      padding: 10px 16px;
-      font-weight: 500;
+      padding: 8px 16px;
+      font-weight: 600;
       cursor: pointer;
+      background: transparent;
+      color: #fff;
     }
 
     .tab-btn.active {
@@ -90,11 +90,17 @@
       border-color: var(--gold);
     }
 
+    main {
+      max-width: 1200px;
+      margin: 0 auto;
+      padding: 20px;
+    }
+
     .stats-grid {
       display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
-      gap: 14px;
-      margin-bottom: 20px;
+      grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+      gap: 12px;
+      margin-bottom: 18px;
     }
 
     .metric-card {
@@ -102,37 +108,33 @@
       border: 1px solid var(--border);
       border-left: 5px solid var(--gold);
       border-radius: 12px;
-      padding: 12px 14px;
+      padding: 12px;
       box-shadow: var(--shadow);
     }
 
     .metric-card .label {
-      font-size: 0.82rem;
+      font-size: 0.8rem;
       color: var(--muted);
-      margin-bottom: 6px;
       text-transform: uppercase;
-      letter-spacing: 0.04em;
+      letter-spacing: 0.05em;
+      margin-bottom: 4px;
     }
 
     .metric-card .value {
       font-family: 'Cormorant Garamond', serif;
       color: var(--gold);
       font-size: 2rem;
-      line-height: 1;
       font-weight: 700;
     }
 
     .toolbar {
       display: flex;
-      gap: 10px;
       flex-wrap: wrap;
+      gap: 10px;
       margin-bottom: 14px;
     }
 
-    input, select, textarea, button {
-      font: inherit;
-    }
-
+    input, select, textarea, button { font: inherit; }
     input, select, textarea {
       border: 1px solid var(--border);
       border-radius: 8px;
@@ -142,51 +144,51 @@
       width: 100%;
     }
 
-    .toolbar input, .toolbar select {
-      min-width: 220px;
-      max-width: 280px;
-    }
+    .toolbar input, .toolbar select { min-width: 220px; max-width: 280px; }
 
     .btn-primary {
       border: 0;
       border-radius: 8px;
       padding: 10px 14px;
-      cursor: pointer;
       background: var(--gold);
       color: #fff;
       font-weight: 600;
+      cursor: pointer;
     }
 
-    .btn-muted {
+    .btn-outline {
       border: 1px solid var(--border);
+      border-radius: 8px;
+      padding: 10px 14px;
       background: #fff;
       color: var(--warm-gray);
-      border-radius: 8px;
-      padding: 8px 10px;
+      font-weight: 500;
       cursor: pointer;
+    }
+
+    .table-wrap {
+      overflow-x: auto;
+      border: 1px solid var(--border);
+      border-radius: 12px;
+      background: #fff;
+      box-shadow: var(--shadow);
     }
 
     table {
       width: 100%;
       border-collapse: collapse;
-      background: #fff;
-      border: 1px solid var(--border);
-      border-radius: 12px;
-      overflow: hidden;
-      box-shadow: var(--shadow);
+      min-width: 900px;
     }
 
     th, td {
       text-align: left;
-      padding: 12px 10px;
       border-bottom: 1px solid var(--border);
-      font-size: 0.93rem;
+      padding: 12px 10px;
+      font-size: 0.92rem;
       vertical-align: top;
     }
 
-    tbody tr:hover {
-      background: var(--pale-gold);
-    }
+    tbody tr:hover { background: var(--pale-gold); }
 
     .customer-cell {
       display: flex;
@@ -195,260 +197,204 @@
     }
 
     .avatar {
-      width: 32px;
-      height: 32px;
+      width: 34px;
+      height: 34px;
       border-radius: 50%;
-      background: var(--gold-light);
-      color: var(--black);
       display: inline-flex;
       align-items: center;
       justify-content: center;
-      font-weight: 600;
-      font-size: 0.82rem;
+      background: var(--light-gold);
+      color: var(--black);
+      font-size: 0.8rem;
+      font-weight: 700;
     }
 
     .status {
       border-radius: 999px;
+      display: inline-block;
       padding: 4px 10px;
       font-size: 0.75rem;
       font-weight: 600;
-      display: inline-block;
     }
+    .status-active { background: var(--success-bg); color: var(--success); }
+    .status-pending { background: var(--pending-bg); color: var(--pending); }
+    .status-completed { background: var(--completed-bg); color: #6a6a6a; }
 
-    .status-active { color: var(--success); background: var(--success-bg); }
-    .status-pending { color: var(--pending); background: var(--pending-bg); }
-    .status-completed { color: #666; background: var(--completed-bg); }
+    .actions { display: flex; gap: 8px; }
 
-    .actions {
-      display: flex;
-      gap: 8px;
-    }
-
-    .actions button {
-      border: none;
-      background: transparent;
-      color: var(--gold);
+    .action-btn {
+      border: 1px solid var(--border);
+      border-radius: 6px;
+      background: #fff;
+      color: var(--warm-gray);
+      padding: 4px 8px;
       cursor: pointer;
       font-weight: 600;
-      padding: 0;
+      font-size: 0.8rem;
     }
 
-    .hidden { display: none !important; }
+    .action-btn:hover { border-color: var(--gold); }
+    .action-btn.del:hover { border-color: var(--danger); color: var(--danger); }
 
     .cards {
       display: grid;
-      grid-template-columns: repeat(auto-fill, minmax(260px, 1fr));
-      gap: 14px;
+      grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+      gap: 12px;
     }
 
-    .order-card, .measure-card, .material-summary-card {
+    .card {
       background: #fff;
       border: 1px solid var(--border);
       border-left: 5px solid var(--gold);
       border-radius: 12px;
-      padding: 14px;
+      padding: 12px;
       box-shadow: var(--shadow);
     }
 
-    .order-card h4, .measure-card h4 {
-      margin: 0 0 8px;
-      font-size: 1.05rem;
+    .card h4 {
+      margin: 0;
+      font-family: 'Cormorant Garamond', serif;
+      font-size: 1.5rem;
+      color: var(--black);
     }
 
-    .order-card p, .measure-card p {
-      margin: 5px 0;
-      font-size: 0.9rem;
-    }
-
-    .balance.due { color: var(--danger); font-weight: 600; }
-    .balance.paid { color: var(--success); font-weight: 600; }
+    .card p { margin: 7px 0 0; font-size: 0.9rem; }
+    .balance-due { color: var(--danger); font-weight: 600; }
+    .balance-paid { color: var(--success); font-weight: 600; }
 
     .measure-grid {
+      margin-top: 10px;
       display: grid;
       grid-template-columns: repeat(2, 1fr);
       gap: 8px;
-      margin-top: 10px;
     }
 
-    .measure-tile {
+    .tile {
       background: var(--pale-gold);
-      border-radius: 10px;
+      border-radius: 8px;
       padding: 8px;
       text-align: center;
     }
 
-    .measure-tile .k { font-size: 0.76rem; color: var(--muted); }
-    .measure-tile .v { font-weight: 600; font-size: 0.95rem; margin-top: 2px; }
+    .tile .k { font-size: 0.75rem; color: var(--muted); }
+    .tile .v { margin-top: 3px; font-weight: 600; }
+
+    .hidden { display: none !important; }
+
+    .empty {
+      border: 1px dashed var(--border);
+      border-radius: 12px;
+      background: #fff;
+      padding: 28px;
+      text-align: center;
+      color: var(--muted);
+    }
 
     .modal-backdrop {
       position: fixed;
       inset: 0;
-      background: rgba(26, 18, 8, 0.5);
+      z-index: 50;
+      background: rgba(26, 18, 8, 0.55);
       display: none;
       align-items: center;
       justify-content: center;
-      padding: 20px;
-      z-index: 50;
+      padding: 18px;
     }
 
     .modal {
-      width: min(960px, 100%);
+      background: #fff;
+      border: 1px solid var(--border);
+      border-top: 6px solid var(--gold);
+      border-radius: 14px;
+      width: min(880px, 100%);
       max-height: 92vh;
       overflow: auto;
-      background: #fff;
-      border-radius: 14px;
-      padding: 18px;
-      border: 1px solid var(--border);
+      padding: 16px;
+    }
+
+    .modal-head {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      gap: 10px;
+      margin-bottom: 10px;
     }
 
     .modal h3 {
-      margin: 0 0 8px;
+      margin: 0;
       font-family: 'Cormorant Garamond', serif;
-      font-size: 1.8rem;
       color: var(--gold);
+      font-size: 1.9rem;
     }
 
-    .section {
+    .x-btn {
       border: 1px solid var(--border);
-      border-radius: 10px;
-      padding: 12px;
-      margin-bottom: 12px;
+      width: 34px;
+      height: 34px;
+      border-radius: 8px;
       background: #fff;
-    }
-
-    .section legend, .section h5 {
-      font-size: 0.9rem;
-      font-weight: 600;
-      color: var(--muted);
-      margin-bottom: 10px;
+      cursor: pointer;
+      font-size: 1.2rem;
+      color: var(--warm-gray);
     }
 
     .grid-2 {
       display: grid;
+      gap: 10px;
       grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
-      gap: 10px;
     }
 
-    .materials-list {
-      display: flex;
-      flex-direction: column;
-      gap: 10px;
-      margin-top: 10px;
-    }
-
-    .material-row {
-      background: var(--pale-gold);
+    fieldset {
       border: 1px solid var(--border);
       border-radius: 10px;
-      padding: 10px;
-      display: grid;
-      gap: 8px;
-      grid-template-columns: 1.3fr repeat(4, 1fr) auto auto;
-      align-items: end;
+      padding: 12px;
+      margin: 0 0 12px;
     }
 
-    .material-row .supplied-wrap {
-      display: flex;
-      align-items: center;
-      gap: 6px;
-      padding-bottom: 8px;
-      font-size: 0.83rem;
-      white-space: nowrap;
-    }
-
-    .remove-material {
-      background: #fff;
-      border: 1px solid var(--border);
-      width: 30px;
-      height: 30px;
-      border-radius: 6px;
-      cursor: pointer;
-      color: var(--danger);
-      font-size: 1.1rem;
-      line-height: 1;
-    }
-
-    .material-cost-line {
-      margin-top: 10px;
+    legend {
+      color: var(--muted);
+      padding: 0 4px;
+      font-size: 0.85rem;
       font-weight: 600;
-      color: var(--gold);
     }
 
-    .modal-footer {
+    .footer {
       display: flex;
       justify-content: flex-end;
       gap: 10px;
-    }
-
-    .materials-top-stats {
-      display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
-      gap: 12px;
-      margin-bottom: 14px;
-    }
-
-    .materials-table .expand-toggle {
-      cursor: pointer;
-      color: var(--gold);
-      font-weight: 600;
-    }
-
-    .detail-row td {
-      background: #fffdf8;
-      padding: 0;
-    }
-
-    .details-wrap {
-      padding: 10px;
-    }
-
-    .details-wrap table {
-      box-shadow: none;
-      border-radius: 8px;
-    }
-
-    .empty {
-      text-align: center;
-      color: var(--muted);
-      padding: 30px;
-      border: 1px dashed var(--border);
-      border-radius: 12px;
-      background: #fff;
-    }
-
-    @media (max-width: 900px) {
-      .material-row { grid-template-columns: 1fr 1fr; }
     }
   </style>
 </head>
 <body>
   <header class="header">
-    <h1 class="logo">JokingCe Style</h1>
-    <p class="subtitle">Customer Management</p>
+    <div class="brand">
+      <div>
+        <h1 class="logo">JokingCe Style</h1>
+        <p class="subtitle">Customer Management</p>
+      </div>
+      <nav class="tabs">
+        <button class="tab-btn active" data-tab="customers">Customers</button>
+        <button class="tab-btn" data-tab="orders">Orders</button>
+        <button class="tab-btn" data-tab="measurements">Measurements</button>
+      </nav>
+    </div>
   </header>
 
   <main>
-    <nav class="tabs">
-      <button class="tab-btn active" data-tab="customers">Customers</button>
-      <button class="tab-btn" data-tab="orders">Orders</button>
-      <button class="tab-btn" data-tab="measurements">Measurements</button>
-      <button class="tab-btn" data-tab="materials">Materials</button>
-    </nav>
-
-    <section class="stats-grid" id="dashboardStats"></section>
+    <section id="stats" class="stats-grid"></section>
 
     <section id="customersView" class="view">
       <div class="toolbar">
         <input id="searchInput" type="text" placeholder="Search name, phone, service" />
         <select id="statusFilter">
-          <option value="all">All Statuses</option>
+          <option value="all">All</option>
           <option value="Active">Active</option>
-          <option value="Pending">Pending</option>
+          <option value="Pending">Pending Pickup</option>
           <option value="Completed">Completed</option>
         </select>
-        <button class="btn-primary" id="addCustomerBtn">+ Add Customer</button>
+        <button id="addCustomerBtn" class="btn-primary">+ Add Customer</button>
       </div>
-      <div id="customersTableWrap"></div>
+      <div id="customersTable"></div>
     </section>
 
     <section id="ordersView" class="view hidden">
@@ -458,402 +404,301 @@
     <section id="measurementsView" class="view hidden">
       <div id="measureCards" class="cards"></div>
     </section>
-
-    <section id="materialsView" class="view hidden">
-      <div class="materials-top-stats" id="materialsTopStats"></div>
-      <div id="materialsUsageCards" class="cards" style="margin-bottom: 14px;"></div>
-      <div id="materialsTableWrap"></div>
-    </section>
   </main>
 
-  <div class="modal-backdrop" id="modalBackdrop">
+  <div id="modalBackdrop" class="modal-backdrop">
     <div class="modal">
-      <h3 id="modalTitle">Add Customer</h3>
+      <div class="modal-head">
+        <h3 id="modalTitle">Add Customer</h3>
+        <button type="button" id="closeModalBtn" class="x-btn">×</button>
+      </div>
       <form id="customerForm">
         <input type="hidden" id="customerId" />
 
-        <fieldset class="section">
-          <legend>Section 1 — Customer Info</legend>
+        <fieldset>
+          <legend>Customer Details</legend>
           <div class="grid-2">
-            <label>Full Name<input required id="name" /></label>
-            <label>Phone<input required id="phone" /></label>
-          </div>
-        </fieldset>
-
-        <fieldset class="section">
-          <legend>Section 2 — Order Details</legend>
-          <div class="grid-2">
+            <label>Full Name <input id="name" required /></label>
+            <label>Phone <input id="phone" required /></label>
             <label>Service Type
               <select id="service" required>
                 <option value="">Select service</option>
-                <option>Dress Sewing</option><option>Kente Outfit</option><option>Suit Tailoring</option>
-                <option>Blouse & Skirt</option><option>Wedding Gown</option><option>Alteration</option>
-                <option>Traditional Attire</option><option>Corporate Wear</option>
+                <option>Dress Sewing</option>
+                <option>Kente Outfit</option>
+                <option>Suit Tailoring</option>
+                <option>Blouse & Skirt</option>
+                <option>Wedding Gown</option>
+                <option>Alteration</option>
+                <option>Traditional Attire</option>
+                <option>Corporate Wear</option>
               </select>
             </label>
-            <label>Due Date<input id="due" type="date" /></label>
-            <label>Amount (GH₵)<input id="amount" type="number" step="0.01" min="0" /></label>
-            <label>Deposit Paid (GH₵)<input id="deposit" type="number" step="0.01" min="0" /></label>
+            <label>Due Date <input id="due" type="date" /></label>
+            <label>Amount (GH₵) <input id="amount" type="number" step="0.01" min="0" /></label>
+            <label>Deposit Paid (GH₵) <input id="deposit" type="number" step="0.01" min="0" /></label>
             <label>Status
-              <select id="status"><option>Active</option><option>Pending</option><option>Completed</option></select>
+              <select id="status">
+                <option>Active</option>
+                <option>Pending</option>
+                <option>Completed</option>
+              </select>
             </label>
           </div>
         </fieldset>
 
-        <fieldset class="section">
-          <legend>Section 3 — Measurements</legend>
+        <fieldset>
+          <legend>Measurements (cm)</legend>
           <div class="grid-2">
-            <label>Bust (cm)<input id="bust" type="number" step="0.1" min="0" /></label>
-            <label>Waist (cm)<input id="waist" type="number" step="0.1" min="0" /></label>
-            <label>Hips (cm)<input id="hips" type="number" step="0.1" min="0" /></label>
-            <label>Length (cm)<input id="length" type="number" step="0.1" min="0" /></label>
+            <label>Bust <input id="bust" type="number" step="0.1" min="0" /></label>
+            <label>Waist <input id="waist" type="number" step="0.1" min="0" /></label>
+            <label>Hips <input id="hips" type="number" step="0.1" min="0" /></label>
+            <label>Length <input id="length" type="number" step="0.1" min="0" /></label>
           </div>
         </fieldset>
 
-        <fieldset class="section">
-          <legend>Section 4 — Materials</legend>
-          <button class="btn-muted" type="button" id="addMaterialBtn">Add Material</button>
-          <div id="materialsList" class="materials-list"></div>
-          <div class="material-cost-line" id="modalMaterialCost">Total Material Cost: GH₵ 0.00</div>
-        </fieldset>
-
-        <fieldset class="section">
-          <legend>Section 5 — Notes</legend>
+        <fieldset>
+          <legend>Notes</legend>
           <textarea id="notes" rows="4" placeholder="Special instructions..."></textarea>
         </fieldset>
 
-        <div class="modal-footer">
-          <button type="button" class="btn-muted" id="cancelBtn">Cancel</button>
-          <button type="submit" class="btn-primary">Save Customer</button>
+        <div class="footer">
+          <button type="button" id="cancelBtn" class="btn-outline">Cancel</button>
+          <button type="submit" class="btn-primary" id="saveBtn">Save</button>
         </div>
       </form>
     </div>
   </div>
 
-<script>
-  const materialTypes = ['Ankara','Kente','Lace','Satin','Chiffon','Cotton','Lining','Zipper','Button','Thread','Other'];
-  const views = ['customers','orders','measurements','materials'];
-  const formatMoney = n => `GH₵ ${Number(n || 0).toFixed(2)}`;
-  const datePlus14 = () => {
-    const d = new Date();
-    d.setDate(d.getDate() + 14);
-    return d.toISOString().slice(0,10);
-  };
-
-  let customers = [
-    {id:1,name:'Akosua Mensah',phone:'+233 24 112 2233',service:'Wedding Gown',due:'2026-04-20',amount:2200,deposit:900,status:'Active',bust:92,waist:74,hips:102,length:158,notes:'Beaded sleeves and train.',materials:[{name:'French Lace',type:'Lace',color:'Ivory',yards:4,unitCost:120,supplied:false},{name:'Satin Lining',type:'Satin',color:'Champagne',yards:3,unitCost:55,supplied:false},{name:'Invisible Zipper',type:'Zipper',color:'Ivory',yards:1,unitCost:18,supplied:true}]},
-    {id:2,name:'Esi Owusu',phone:'+233 54 331 7744',service:'Kente Outfit',due:'2026-04-16',amount:1300,deposit:1300,status:'Completed',bust:88,waist:70,hips:97,length:145,notes:'Matching head wrap.',materials:[{name:'Premium Kente',type:'Kente',color:'Royal Gold',yards:5,unitCost:95,supplied:true},{name:'Cotton Lining',type:'Lining',color:'Cream',yards:2.5,unitCost:28,supplied:false}]},
-    {id:3,name:'Ama Boateng',phone:'+233 27 992 4500',service:'Blouse & Skirt',due:'2026-04-13',amount:780,deposit:300,status:'Pending',bust:95,waist:80,hips:108,length:112,notes:'Need room at hips.',materials:[{name:'Ankara Print',type:'Ankara',color:'Blue/Gold',yards:4.5,unitCost:42,supplied:false},{name:'Thread Set',type:'Thread',color:'Navy',yards:2,unitCost:6,supplied:false},{name:'Buttons',type:'Button',color:'Gold',yards:6,unitCost:2.5,supplied:true}]},
-    {id:4,name:'Adwoa Asante',phone:'+233 20 555 6601',service:'Corporate Wear',due:'2026-04-22',amount:980,deposit:500,status:'Active',bust:90,waist:76,hips:100,length:140,notes:'Two-piece office set.',materials:[{name:'Cotton Twill',type:'Cotton',color:'Charcoal',yards:4,unitCost:38,supplied:false},{name:'Lining',type:'Lining',color:'Black',yards:2,unitCost:26,supplied:false}]},
-    {id:5,name:'Naa Dedei Quaye',phone:'+233 26 809 4481',service:'Dress Sewing',due:'2026-04-19',amount:860,deposit:450,status:'Active',bust:86,waist:68,hips:94,length:136,notes:'Simple flare, no slit.',materials:[{name:'Chiffon Floral',type:'Chiffon',color:'Peach',yards:4,unitCost:48,supplied:true},{name:'Satin Underlay',type:'Satin',color:'Nude',yards:2.5,unitCost:50,supplied:false},{name:'Back Zipper',type:'Zipper',color:'Nude',yards:1,unitCost:15,supplied:false}]}
-  ];
-
-  const el = id => document.getElementById(id);
-
-  const getMaterialCost = c => c.materials.reduce((sum,m) => sum + (m.supplied ? 0 : Number(m.yards||0)*Number(m.unitCost||0)), 0);
-  const getTotalYards = c => c.materials.reduce((sum,m) => sum + Number(m.yards||0), 0);
-
-  function renderStats() {
-    const activeOrders = customers.filter(c => c.status === 'Active').length;
-    const pendingPickup = customers.filter(c => c.status === 'Pending').length;
-    const completed = customers.filter(c => c.status === 'Completed').length;
-    const stats = [
-      ['Total Customers', customers.length],
-      ['Active Orders', activeOrders],
-      ['Pending Pickup', pendingPickup],
-      ['Completed', completed]
-    ];
-    el('dashboardStats').innerHTML = stats.map(([label,value]) => `
-      <article class="metric-card"><div class="label">${label}</div><div class="value">${value}</div></article>
-    `).join('');
-  }
-
-  function statusBadge(s) {
-    const map = {Active:'status-active',Pending:'status-pending',Completed:'status-completed'};
-    return `<span class="status ${map[s]||''}">${s}</span>`;
-  }
-
-  function initials(name) {
-    return name.split(' ').slice(0,2).map(n => n[0]).join('').toUpperCase();
-  }
-
-  function renderCustomers() {
-    const q = el('searchInput').value.trim().toLowerCase();
-    const status = el('statusFilter').value;
-    const list = customers.filter(c => {
-      const text = `${c.name} ${c.phone} ${c.service}`.toLowerCase();
-      const queryMatch = !q || text.includes(q);
-      const statusMatch = status === 'all' || c.status === status;
-      return queryMatch && statusMatch;
-    });
-
-    if (!list.length) {
-      el('customersTableWrap').innerHTML = '<div class="empty">No customers match your filters.</div>';
-      return;
-    }
-
-    el('customersTableWrap').innerHTML = `
-      <table>
-        <thead>
-          <tr><th>Customer</th><th>Phone</th><th>Service</th><th>Due Date</th><th>Amount</th><th>Status</th><th>Actions</th></tr>
-        </thead>
-        <tbody>
-          ${list.map(c => {
-            const balance = Number(c.amount || 0) - Number(c.deposit || 0);
-            return `<tr>
-              <td><div class="customer-cell"><span class="avatar">${initials(c.name)}</span><span>${c.name}</span></div></td>
-              <td>${c.phone}</td>
-              <td>${c.service}</td>
-              <td>${c.due || '-'}</td>
-              <td>${formatMoney(c.amount)}<br><small>Balance: ${formatMoney(balance)}</small></td>
-              <td>${statusBadge(c.status)}</td>
-              <td><div class="actions">
-                <button data-action="edit" data-id="${c.id}">Edit</button>
-                <button data-action="view" data-id="${c.id}">View</button>
-                <button data-action="del" data-id="${c.id}">Del</button>
-              </div></td>
-            </tr>`;
-          }).join('')}
-        </tbody>
-      </table>`;
-  }
-
-  function renderOrders() {
-    if (!customers.length) { el('ordersCards').innerHTML = '<div class="empty">No orders yet.</div>'; return; }
-    el('ordersCards').innerHTML = customers.map(c => {
-      const balance = Number(c.amount || 0) - Number(c.deposit || 0);
-      const materialCost = getMaterialCost(c);
-      const labour = Number(c.amount || 0) - materialCost;
-      return `<article class="order-card">
-        <h4>${c.name}</h4>
-        <p><strong>${c.service}</strong></p>
-        <p>Due: ${c.due || '-'}</p>
-        <p>Total: ${formatMoney(c.amount)}</p>
-        <p class="balance ${balance > 0 ? 'due' : 'paid'}">Balance: ${formatMoney(balance)}</p>
-        <p>${statusBadge(c.status)}</p>
-        <p>Materials Cost: ${formatMoney(materialCost)}</p>
-        <p>Labour Est.: ${formatMoney(labour)}</p>
-      </article>`;
-    }).join('');
-  }
-
-  function renderMeasurements() {
-    const list = customers.filter(c => [c.bust,c.waist,c.hips,c.length].some(v => Number(v) > 0));
-    if (!list.length) { el('measureCards').innerHTML = '<div class="empty">No measurements available.</div>'; return; }
-    el('measureCards').innerHTML = list.map(c => `
-      <article class="measure-card">
-        <h4>${c.name}</h4>
-        <p>${c.service}</p>
-        <div class="measure-grid">
-          <div class="measure-tile"><div class="k">Bust</div><div class="v">${c.bust || '-'} cm</div></div>
-          <div class="measure-tile"><div class="k">Waist</div><div class="v">${c.waist || '-'} cm</div></div>
-          <div class="measure-tile"><div class="k">Hips</div><div class="v">${c.hips || '-'} cm</div></div>
-          <div class="measure-tile"><div class="k">Length</div><div class="v">${c.length || '-'} cm</div></div>
-        </div>
-        ${c.notes ? `<p><strong>Notes:</strong> ${c.notes}</p>` : ''}
-      </article>
-    `).join('');
-  }
-
-  function renderMaterials() {
-    const allMaterials = customers.flatMap(c => c.materials || []);
-    const totalMaterialsCost = customers.reduce((sum,c) => sum + getMaterialCost(c), 0);
-    const suppliedCount = customers.filter(c => (c.materials || []).some(m => m.supplied)).length;
-
-    el('materialsTopStats').innerHTML = `
-      <article class="metric-card"><div class="label">Total Materials Cost (GH₵)</div><div class="value" style="font-size:1.8rem;">${Number(totalMaterialsCost).toFixed(2)}</div></article>
-      <article class="metric-card"><div class="label">Customers Who Supplied Own Fabric</div><div class="value" style="font-size:1.8rem;">${suppliedCount}</div></article>
-    `;
-
-    const usageByType = materialTypes.map(type => {
-      const yards = allMaterials.filter(m => m.type === type).reduce((s,m) => s + Number(m.yards||0), 0);
-      return {type, yards};
-    }).filter(x => x.yards > 0).sort((a,b)=>b.yards-a.yards);
-
-    el('materialsUsageCards').innerHTML = usageByType.length
-      ? usageByType.map(x => `<article class="material-summary-card"><h4 style="margin:0">${x.type}</h4><p style="margin:8px 0 0">Total Usage: <strong>${x.yards.toFixed(1)} yds</strong></p></article>`).join('')
-      : '<div class="empty">No material usage yet.</div>';
-
-    const withMaterials = customers.filter(c => (c.materials || []).length);
-    if (!withMaterials.length) { el('materialsTableWrap').innerHTML = '<div class="empty">No materials recorded.</div>'; return; }
-
-    el('materialsTableWrap').innerHTML = `
-      <table class="materials-table">
-        <thead><tr><th>Customer</th><th>Service</th><th>Materials Summary</th><th>Total Yards</th><th>Materials Cost</th><th>Supplied vs Purchased</th><th>Details</th></tr></thead>
-        <tbody>
-          ${withMaterials.map(c => {
-            const supplied = c.materials.filter(m => m.supplied).length;
-            const purchased = c.materials.length - supplied;
-            const detailId = `detail-${c.id}`;
-            return `<tr>
-              <td>${c.name}</td>
-              <td>${c.service}</td>
-              <td>${c.materials.map(m => m.name).join(', ')}</td>
-              <td>${getTotalYards(c).toFixed(1)}</td>
-              <td>${formatMoney(getMaterialCost(c))}</td>
-              <td>${supplied} supplied / ${purchased} purchased</td>
-              <td><span class="expand-toggle" data-detail="${detailId}">Toggle</span></td>
-            </tr>
-            <tr id="${detailId}" class="detail-row hidden"><td colspan="7">
-              <div class="details-wrap">
-                <table>
-                  <thead><tr><th>Material Name</th><th>Type</th><th>Color</th><th>Yards</th><th>Unit Cost</th><th>Total Cost</th><th>Supplied</th></tr></thead>
-                  <tbody>
-                    ${c.materials.map(m => {
-                      const total = Number(m.yards||0)*Number(m.unitCost||0);
-                      return `<tr>
-                        <td>${m.name}</td><td>${m.type}</td><td>${m.color || '-'}</td>
-                        <td>${Number(m.yards||0).toFixed(1)}</td><td>${formatMoney(m.unitCost)}</td>
-                        <td>${formatMoney(m.supplied ? 0 : total)}</td><td>${m.supplied ? '✓' : '—'}</td>
-                      </tr>`;
-                    }).join('')}
-                  </tbody>
-                </table>
-              </div>
-            </td></tr>`;
-          }).join('')}
-        </tbody>
-      </table>`;
-  }
-
-  function renderAll() {
-    renderStats();
-    renderCustomers();
-    renderOrders();
-    renderMeasurements();
-    renderMaterials();
-  }
-
-  function createMaterialRow(material = {}) {
-    const row = document.createElement('div');
-    row.className = 'material-row';
-    row.innerHTML = `
-      <label>Name<input class="mat-name" value="${material.name || ''}" placeholder="Material name"></label>
-      <label>Type<select class="mat-type">${materialTypes.map(t => `<option ${material.type===t ? 'selected':''}>${t}</option>`).join('')}</select></label>
-      <label>Color<input class="mat-color" value="${material.color || ''}" placeholder="Color"></label>
-      <label>Yards<input class="mat-yards" type="number" min="0" step="0.1" value="${material.yards ?? ''}"></label>
-      <label>Unit Cost<input class="mat-unit" type="number" min="0" step="0.01" value="${material.unitCost ?? ''}"></label>
-      <label class="supplied-wrap"><input class="mat-supplied" type="checkbox" ${material.supplied ? 'checked':''}> Customer Supplied</label>
-      <button type="button" class="remove-material">×</button>
-    `;
-
-    row.querySelector('.remove-material').addEventListener('click', () => { row.remove(); updateModalMaterialCost(); });
-    row.querySelectorAll('input,select').forEach(i => i.addEventListener('input', updateModalMaterialCost));
-    return row;
-  }
-
-  function getModalMaterials() {
-    return Array.from(el('materialsList').children).map(row => ({
-      name: row.querySelector('.mat-name').value.trim(),
-      type: row.querySelector('.mat-type').value,
-      color: row.querySelector('.mat-color').value.trim(),
-      yards: Number(row.querySelector('.mat-yards').value || 0),
-      unitCost: Number(row.querySelector('.mat-unit').value || 0),
-      supplied: row.querySelector('.mat-supplied').checked
-    })).filter(m => m.name || m.yards || m.unitCost || m.color);
-  }
-
-  function updateModalMaterialCost() {
-    const total = getModalMaterials().reduce((s,m) => s + (m.supplied ? 0 : m.yards*m.unitCost), 0);
-    el('modalMaterialCost').textContent = `Total Material Cost: ${formatMoney(total)}`;
-  }
-
-  function openModal(customer = null) {
-    el('customerForm').reset();
-    el('materialsList').innerHTML = '';
-    el('customerId').value = customer?.id || '';
-    el('modalTitle').textContent = customer ? 'Edit Customer' : 'Add Customer';
-    el('due').value = customer?.due || datePlus14();
-    if (customer) {
-      ['name','phone','service','due','amount','deposit','status','bust','waist','hips','length','notes'].forEach(k => {
-        el(k).value = customer[k] ?? '';
-      });
-      (customer.materials || []).forEach(m => el('materialsList').appendChild(createMaterialRow(m)));
-    } else {
-      el('status').value = 'Active';
-      el('materialsList').appendChild(createMaterialRow());
-    }
-    updateModalMaterialCost();
-    el('modalBackdrop').style.display = 'flex';
-  }
-
-  function closeModal() { el('modalBackdrop').style.display = 'none'; }
-
-  document.querySelectorAll('.tab-btn').forEach(btn => {
-    btn.addEventListener('click', () => {
-      document.querySelectorAll('.tab-btn').forEach(b => b.classList.remove('active'));
-      btn.classList.add('active');
-      const target = btn.dataset.tab;
-      views.forEach(v => el(v + 'View').classList.toggle('hidden', v !== target));
-    });
-  });
-
-  el('searchInput').addEventListener('input', renderCustomers);
-  el('statusFilter').addEventListener('change', renderCustomers);
-  el('addCustomerBtn').addEventListener('click', () => openModal());
-  el('cancelBtn').addEventListener('click', closeModal);
-  el('modalBackdrop').addEventListener('click', (e) => { if (e.target.id === 'modalBackdrop') closeModal(); });
-  el('addMaterialBtn').addEventListener('click', () => el('materialsList').appendChild(createMaterialRow()));
-
-  el('customerForm').addEventListener('submit', e => {
-    e.preventDefault();
-    const name = el('name').value.trim();
-    const phone = el('phone').value.trim();
-    const service = el('service').value.trim();
-    if (!name || !phone || !service) {
-      alert('Name, Phone, and Service are required.');
-      return;
-    }
-
-    const payload = {
-      id: Number(el('customerId').value) || Date.now(),
-      name, phone, service,
-      due: el('due').value || datePlus14(),
-      amount: Number(el('amount').value || 0),
-      deposit: Number(el('deposit').value || 0),
-      status: el('status').value,
-      bust: Number(el('bust').value || 0),
-      waist: Number(el('waist').value || 0),
-      hips: Number(el('hips').value || 0),
-      length: Number(el('length').value || 0),
-      notes: el('notes').value.trim(),
-      materials: getModalMaterials()
+  <script>
+    const el = id => document.getElementById(id);
+    const formatMoney = n => `GH₵ ${Number(n || 0).toFixed(2)}`;
+    const plus14Days = () => {
+      const d = new Date();
+      d.setDate(d.getDate() + 14);
+      return d.toISOString().slice(0, 10);
     };
 
-    const existingIndex = customers.findIndex(c => c.id === payload.id);
-    if (existingIndex >= 0) customers[existingIndex] = payload;
-    else customers.unshift(payload);
+    let customers = [
+      { id: 1, name: 'Akosua Mensah', phone: '+233 24 112 2233', service: 'Wedding Gown', due: '2026-04-20', amount: 2200, deposit: 900, status: 'Active', bust: 92, waist: 74, hips: 102, length: 158, notes: 'Beaded sleeves and detachable train.' },
+      { id: 2, name: 'Esi Owusu', phone: '+233 54 331 7744', service: 'Kente Outfit', due: '2026-04-16', amount: 1300, deposit: 1300, status: 'Completed', bust: 88, waist: 70, hips: 97, length: 145, notes: 'Matching head wrap with neat finish.' },
+      { id: 3, name: 'Ama Boateng', phone: '+233 27 992 4500', service: 'Blouse & Skirt', due: '2026-04-13', amount: 780, deposit: 300, status: 'Pending', bust: 95, waist: 80, hips: 108, length: 112, notes: 'Allow extra ease around hips.' },
+      { id: 4, name: 'Adwoa Asante', phone: '+233 20 555 6601', service: 'Corporate Wear', due: '2026-04-22', amount: 980, deposit: 500, status: 'Active', bust: 90, waist: 76, hips: 100, length: 140, notes: 'Two-piece office set in charcoal.' },
+      { id: 5, name: 'Naa Dedei Quaye', phone: '+233 26 809 4481', service: 'Dress Sewing', due: '2026-04-19', amount: 860, deposit: 450, status: 'Active', bust: 86, waist: 68, hips: 94, length: 136, notes: 'Simple flare silhouette, no slit.' }
+    ];
 
-    closeModal();
-    renderAll();
-  });
+    const views = ['customers', 'orders', 'measurements'];
 
-  document.addEventListener('click', e => {
-    const btn = e.target.closest('[data-action]');
-    if (btn) {
+    const initials = name => name.split(' ').slice(0, 2).map(part => part[0] || '').join('').toUpperCase();
+
+    const badge = status => {
+      const cls = status === 'Active' ? 'status-active' : status === 'Pending' ? 'status-pending' : 'status-completed';
+      const label = status === 'Pending' ? 'Pending Pickup' : status;
+      return `<span class="status ${cls}">${label}</span>`;
+    };
+
+    function renderStats() {
+      const stats = [
+        ['Total Customers', customers.length],
+        ['Active Orders', customers.filter(c => c.status === 'Active').length],
+        ['Pending Pickup', customers.filter(c => c.status === 'Pending').length],
+        ['Completed', customers.filter(c => c.status === 'Completed').length]
+      ];
+      el('stats').innerHTML = stats.map(([label, value]) => `
+        <article class="metric-card">
+          <div class="label">${label}</div>
+          <div class="value">${value}</div>
+        </article>
+      `).join('');
+    }
+
+    function renderCustomers() {
+      const q = el('searchInput').value.trim().toLowerCase();
+      const statusFilter = el('statusFilter').value;
+      const list = customers.filter(c => {
+        const matchesSearch = !q || `${c.name} ${c.phone} ${c.service}`.toLowerCase().includes(q);
+        const matchesStatus = statusFilter === 'all' || c.status === statusFilter;
+        return matchesSearch && matchesStatus;
+      });
+
+      if (!list.length) {
+        el('customersTable').innerHTML = '<div class="empty">No customers match your filters.</div>';
+        return;
+      }
+
+      el('customersTable').innerHTML = `
+        <div class="table-wrap">
+          <table>
+            <thead>
+              <tr>
+                <th>Customer</th><th>Phone</th><th>Service</th><th>Due Date</th><th>Amount</th><th>Status</th><th>Actions</th>
+              </tr>
+            </thead>
+            <tbody>
+              ${list.map(c => {
+                const balance = Number(c.amount || 0) - Number(c.deposit || 0);
+                return `
+                  <tr>
+                    <td><div class="customer-cell"><span class="avatar">${initials(c.name)}</span><span>${c.name}</span></div></td>
+                    <td>${c.phone}</td>
+                    <td>${c.service}</td>
+                    <td>${c.due || '-'}</td>
+                    <td>${formatMoney(c.amount)}<br><small>Balance: ${formatMoney(balance)}</small></td>
+                    <td>${badge(c.status)}</td>
+                    <td>
+                      <div class="actions">
+                        <button class="action-btn" data-action="edit" data-id="${c.id}">Edit</button>
+                        <button class="action-btn" data-action="view" data-id="${c.id}">View</button>
+                        <button class="action-btn del" data-action="del" data-id="${c.id}">Del</button>
+                      </div>
+                    </td>
+                  </tr>
+                `;
+              }).join('')}
+            </tbody>
+          </table>
+        </div>
+      `;
+    }
+
+    function renderOrders() {
+      if (!customers.length) {
+        el('ordersCards').innerHTML = '<div class="empty">No orders available.</div>';
+        return;
+      }
+      el('ordersCards').innerHTML = customers.map(c => {
+        const balance = Number(c.amount || 0) - Number(c.deposit || 0);
+        return `
+          <article class="card">
+            <h4>${c.name}</h4>
+            <p><strong>${c.service}</strong></p>
+            <p>Due Date: ${c.due || '-'}</p>
+            <p>Total Amount: ${formatMoney(c.amount)}</p>
+            <p class="${balance > 0 ? 'balance-due' : 'balance-paid'}">Balance: ${formatMoney(balance)}</p>
+            <p>${badge(c.status)}</p>
+          </article>
+        `;
+      }).join('');
+    }
+
+    function renderMeasurements() {
+      const list = customers.filter(c => [c.bust, c.waist, c.hips, c.length].some(v => Number(v) > 0));
+      if (!list.length) {
+        el('measureCards').innerHTML = '<div class="empty">No measurement records yet.</div>';
+        return;
+      }
+      el('measureCards').innerHTML = list.map(c => `
+        <article class="card">
+          <h4>${c.name}</h4>
+          <p>${c.service}</p>
+          <div class="measure-grid">
+            <div class="tile"><div class="k">Bust</div><div class="v">${c.bust || '-'} cm</div></div>
+            <div class="tile"><div class="k">Waist</div><div class="v">${c.waist || '-'} cm</div></div>
+            <div class="tile"><div class="k">Hips</div><div class="v">${c.hips || '-'} cm</div></div>
+            <div class="tile"><div class="k">Length</div><div class="v">${c.length || '-'} cm</div></div>
+          </div>
+          ${c.notes ? `<p><strong>Notes:</strong> ${c.notes}</p>` : ''}
+        </article>
+      `).join('');
+    }
+
+    function renderAll() {
+      renderStats();
+      renderCustomers();
+      renderOrders();
+      renderMeasurements();
+    }
+
+    function openModal(customer = null) {
+      el('customerForm').reset();
+      el('customerId').value = customer?.id || '';
+      el('modalTitle').textContent = customer ? 'Edit Customer' : 'Add Customer';
+      el('saveBtn').textContent = customer ? 'Update' : 'Save';
+      el('due').value = customer?.due || plus14Days();
+      if (customer) {
+        ['name', 'phone', 'service', 'due', 'amount', 'deposit', 'status', 'bust', 'waist', 'hips', 'length', 'notes'].forEach(k => {
+          el(k).value = customer[k] ?? '';
+        });
+      } else {
+        el('status').value = 'Active';
+      }
+      el('modalBackdrop').style.display = 'flex';
+    }
+
+    function closeModal() {
+      el('modalBackdrop').style.display = 'none';
+    }
+
+    document.querySelectorAll('.tab-btn').forEach(btn => {
+      btn.addEventListener('click', () => {
+        document.querySelectorAll('.tab-btn').forEach(b => b.classList.remove('active'));
+        btn.classList.add('active');
+        const target = btn.dataset.tab;
+        views.forEach(view => el(`${view}View`).classList.toggle('hidden', view !== target));
+      });
+    });
+
+    el('searchInput').addEventListener('input', renderCustomers);
+    el('statusFilter').addEventListener('change', renderCustomers);
+    el('addCustomerBtn').addEventListener('click', () => openModal());
+    el('cancelBtn').addEventListener('click', closeModal);
+    el('closeModalBtn').addEventListener('click', closeModal);
+    el('modalBackdrop').addEventListener('click', e => {
+      if (e.target.id === 'modalBackdrop') closeModal();
+    });
+
+    el('customerForm').addEventListener('submit', e => {
+      e.preventDefault();
+      const name = el('name').value.trim();
+      const phone = el('phone').value.trim();
+      const service = el('service').value.trim();
+      if (!name || !phone || !service) {
+        alert('Name, Phone, and Service are required.');
+        return;
+      }
+
+      const payload = {
+        id: Number(el('customerId').value) || Date.now(),
+        name,
+        phone,
+        service,
+        due: el('due').value || plus14Days(),
+        amount: Number(el('amount').value || 0),
+        deposit: Number(el('deposit').value || 0),
+        status: el('status').value,
+        bust: Number(el('bust').value || 0),
+        waist: Number(el('waist').value || 0),
+        hips: Number(el('hips').value || 0),
+        length: Number(el('length').value || 0),
+        notes: el('notes').value.trim()
+      };
+
+      const i = customers.findIndex(c => c.id === payload.id);
+      if (i >= 0) customers[i] = payload;
+      else customers.unshift(payload);
+
+      closeModal();
+      renderAll();
+    });
+
+    document.addEventListener('click', e => {
+      const btn = e.target.closest('[data-action]');
+      if (!btn) return;
       const id = Number(btn.dataset.id);
       const customer = customers.find(c => c.id === id);
       if (!customer) return;
+
       if (btn.dataset.action === 'edit') openModal(customer);
       if (btn.dataset.action === 'view') {
-        alert(`${customer.name}\nService: ${customer.service}\nDue: ${customer.due}\nMaterials: ${customer.materials.map(m => m.name).join(', ') || 'None'}`);
+        const balance = Number(customer.amount || 0) - Number(customer.deposit || 0);
+        alert(`${customer.name}\nPhone: ${customer.phone}\nService: ${customer.service}\nDue: ${customer.due}\nAmount: ${formatMoney(customer.amount)}\nBalance: ${formatMoney(balance)}\nStatus: ${customer.status}`);
       }
-      if (btn.dataset.action === 'del') {
-        if (confirm(`Delete ${customer.name}?`)) {
-          customers = customers.filter(c => c.id !== id);
-          renderAll();
-        }
+      if (btn.dataset.action === 'del' && confirm(`Delete ${customer.name}?`)) {
+        customers = customers.filter(c => c.id !== id);
+        renderAll();
       }
-    }
+    });
 
-    const toggle = e.target.closest('.expand-toggle');
-    if (toggle) {
-      const row = el(toggle.dataset.detail);
-      row.classList.toggle('hidden');
-    }
-  });
-
-  renderAll();
-</script>
+    renderAll();
+  </script>
 </body>
 </html>
